@@ -32,7 +32,7 @@ android {
     }
 }
 
-afterEvaluate {
+/*afterEvaluate {
     publishing {
         publications {
             // Creates a Maven publication called "release".
@@ -56,6 +56,20 @@ afterEvaluate {
                 groupId = group
                 artifactId = 'data_acquistion-debug'
                 version = version
+            }
+        }
+    }
+}*/
+
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.release
+                //依赖库组id
+                groupId = 'com.github.data_acquistion'
+                //单组件发布时随意填写，多组件时即为此组件的artifactId
+                artifactId = 'data_acquistion'
             }
         }
     }
